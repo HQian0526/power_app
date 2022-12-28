@@ -1,0 +1,155 @@
+.home{
+    background: -webkit-linear-gradient(bottom, #2CAADB, #98FFF8) no-repeat;
+    .topInfo{
+        @include rowOrColumn(row,space-between,center,center);
+        @include widthAndHeight(9rem, 0.8rem);
+        margin: 0 auto;
+        padding-top: 0.3rem;
+        .coin-none{
+            @include widthAndHeight(5rem, 0.8rem);
+        }
+        .coin-money,.coin-activity{
+            @include widthAndHeight(1.8rem, 0.45rem);
+            @include rowOrColumn(row,space-between,center,center);
+            border-top:0.05rem solid #fff;
+            border-bottom:0.05rem solid #fff;
+            border-radius: 1rem;
+            background-color:#83E0DD;
+            .coin-money-left{
+                @include widthAndHeight(0.65rem, 0.65rem);
+                @include bg-image("~@/assets/home/money");
+                position: relative;
+                left: -0.1rem;
+            }
+            .coin-activity-left{
+                @include widthAndHeight(0.68rem, 0.65rem);
+                @include bg-image("~@/assets/home/exp");
+                position: relative;
+                left: -0.1rem;
+            }
+            .coin-middle{
+                color:#fff;
+                // border: 1px dashed;
+                font-size: 0.35rem;
+                @include widthAndHeight(0.55rem, 0.45rem);
+            }
+            .coin-money-right,.coin-activity-right{
+                @include widthAndHeight(0.6rem, 0.6rem);
+                @include bg-image("~@/assets/home/add");
+            }
+        }
+    }
+    .banner{
+        @include widthAndHeight(9rem, 4rem);
+        @include rowOrColumn(row,space-around,center,center);
+        margin: 0 auto;
+        margin-top: 0.5rem;
+        background: -webkit-linear-gradient(bottom, #25B8E1, #3CDAD9) no-repeat;
+        border-radius: 0.3rem;
+        color: #fff;
+        .banner-left{
+            .banner-learn{
+                font-size: 0.5rem;
+            }
+            .banner-data{
+                font-size: 0.6rem;
+                @include widthAndHeight(8rem, 0.6rem);
+                margin: 0 auto;
+            }
+            .banner-title1{
+                padding-top: 1.8rem;
+            }
+            .banner-title1,.banner-title2{
+                margin-top: 0.2rem;
+                font-size: 0.4rem;
+                font-weight: bold;
+            }
+        }
+        .chartView-userInfo{
+            @include widthAndHeight(4.5rem,3.7rem);
+            // border: 1px dashed;
+            margin-top: 0.5rem;
+        }
+    }
+    .tabbuton{
+        @include rowOrColumn(row,space-between,center,center);
+        @include widthAndHeight(9rem, 1rem);
+        margin: 0.4rem auto;
+        .tabbutton-sign,.tabbutton-bag,.tabbutton-order,.tabbutton-share{
+            background: -webkit-linear-gradient(bottom, #24B7E2, #3DDCD9) no-repeat;
+            border-radius: 0.5rem;
+            @include widthAndHeight(1.8rem, 0.9rem);
+            @include rowOrColumn(row,center,center,center);
+            font-size: 0.35rem;
+            color: #fff;
+        }
+        .sign-icon,.bag-icon,.order-icon,.share-icon{
+            @include widthAndHeight(0.6rem,0.6rem)
+        }
+        .sign-icon{
+            @include bg-image("~@/assets/home/sign")
+        }
+        .bag-icon{
+            @include bg-image("~@/assets/home/bag")
+        }
+        .order-icon{
+            @include bg-image("~@/assets/home/order")
+        }
+        .share-icon{
+            @include bg-image("~@/assets/home/share")
+        }
+    }
+    .main-func{
+        width: 9rem;
+        margin: 0 auto;
+        overflow: auto;
+        .learn-room{
+            @include widthAndHeight(9rem, 5rem);
+            @include bg-image("~@/assets/home/learn-room");
+            @include rowOrColumn(column,center,center,center);
+            margin: 0.4rem auto;
+            color:#fff;
+            font-weight: bold;
+            font-size: 1rem;
+            font-style: italic;
+            .learn-room-font{
+                margin-top: 1.5rem;
+                width: 8rem;
+            }
+        }
+        .other-func{
+            @include widthAndHeight(9rem, 5.6rem);
+            @include rowOrColumn(row,space-between,center,center);
+            margin: 0 auto;
+            .other-left{
+                @include widthAndHeight(4.35rem, 5.6rem);
+                @include bg-image("~@/assets/home/other");
+                @include rowOrColumn(column,center,center,center);
+                .other-left-font{
+                    color:#fff;
+                    margin-top: 3rem;
+                    width: 4rem;
+                    font-weight: bold;
+                    font-size: 0.8rem;
+                    font-style: italic;
+                    text-align: center;
+                }
+            }
+            .other-right{
+                @include widthAndHeight(4.35rem, 5.6rem);
+                @include bg-image("~@/assets/home/activaty");
+                @include rowOrColumn(column,center,center,center);
+                .other-right-font{
+                    color:#fff;
+                    margin-top: 3rem;
+                    width: 4rem;
+                    font-weight: bold;
+                    font-size: 0.8rem;
+                    font-style: italic;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,181 @@
+.analyse {
+  .calendar{
+    background-color: #fff;
+    margin:0 auto;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+    @include widthAndHeight(9rem, 9.5rem);
+    border-radius: 0.24rem;
+    .icon-calendar{
+      @include widthAndHeight(0.12rem,0.45rem );
+      background-color: #ED462F;
+      border-radius: 0.5rem;
+      margin: 0.05rem 0.2rem 0 0 ;
+    }
+    .title-calendar{
+      font-size: 0.5rem;
+      font-weight: 600;
+    }
+    .chartView-calendar{
+      @include widthAndHeight(8.6rem,8.8rem );
+      margin: 0 auto;
+    }
+    .calendar-introduce{
+      @include widthAndHeight(8.6rem,0.8rem );
+      margin: 0 auto;
+      .introduce{
+        font-size: 0.3rem;
+        color:#999999;
+        margin-left: 0.2rem;
+      }
+    }
+  }
+  .today-data{
+    background-color: #fff;
+    margin:0 auto;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+    @include widthAndHeight(9rem, 3rem);
+    border-radius: 0.24rem;
+    .icon-today{
+      @include widthAndHeight(0.12rem,0.45rem );
+      background-color: #5787F7;
+      border-radius: 0.5rem;
+      margin: 0.05rem 0.2rem 0 0 ;
+    }
+    .title-today{
+      font-size: 0.5rem;
+      font-weight: 600;
+    }
+    .today-detail{
+      @include widthAndHeight(9rem, 1.8rem);
+      @include rowOrColumn(row, space-around, center, center);
+      .today-detail-left{
+        @include rowOrColumn(row, space-around, center, center);
+        .left-img{
+          @include widthAndHeight(1rem, 1rem);
+          @include bg-image("~@/assets/analyse/learn")
+        }
+        .left-data{
+          font-size: 0.4rem;
+          margin-left: 0.1rem;
+          .left-data1{
+            color:#666666
+          }
+          .left-data2{
+            font-weight: 400
+          }
+        }
+      }
+      .today-detail-right{
+        @include rowOrColumn(row, space-around, center, center);
+        .right-img{
+          @include widthAndHeight(1rem, 1rem);
+          @include bg-image("~@/assets/analyse/explore")
+        }
+        .right-data{
+          font-size: 0.4rem;
+          margin-left: 0.1rem;
+          .right-data1{
+            color:#666666
+          }
+          .right-data2{
+            font-weight: 400
+          }
+        }
+      }
+    }
+  }
+  .effict{
+    background-color: #fff;
+    margin:0 auto;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+    @include widthAndHeight(9rem, 7rem);
+    border-radius: 0.24rem;
+    .icon-effict{
+      @include widthAndHeight(0.12rem,0.45rem );
+      background-color: #FFBF34;
+      border-radius: 0.5rem;
+      margin: 0.05rem 0.2rem 0 0 ;
+    }
+    .title-effict{
+      font-size: 0.5rem;
+      font-weight: 600;
+    }
+    .chartView-effict{
+      @include widthAndHeight(8.6rem,3.8rem );
+      margin: 0 auto;
+    }
+    .effict-detail{
+      @include widthAndHeight(8.6rem, 1.8rem);
+      margin: 0 auto;
+      @include rowOrColumn(row, space-around, center, center);
+      .effict-good{
+        @include rowOrColumn(column, center, center, center);
+        .effict-good-times{
+          font-size: 0.4rem;
+          color:#999999;
+        }
+        .effict-good-color{
+          @include widthAndHeight(0.4rem, 0.1rem);
+          background-color: #01D295 ;
+          margin-top: 0.1rem;
+          border-radius: 30%;
+        }
+        .effict-good-number{
+          font-size: 0.5rem;
+          margin-top: 0.1rem;
+          font-weight: 400;
+        }
+      }
+      .effict-bad{
+        @include rowOrColumn(column, center, center, center);
+        .effict-bad-times{
+          font-size: 0.4rem;
+          color:#999999;
+        }
+        .effict-bad-color{
+          @include widthAndHeight(0.4rem, 0.1rem);
+          background-color: #E6EBF8 ;
+          margin-top: 0.1rem;
+          border-radius: 30%;
+        }
+        .effict-bad-number{
+          font-size: 0.5rem;
+          margin-top: 0.1rem;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .compare{
+    background-color: #fff;
+    margin:0 auto;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+    @include widthAndHeight(9rem, 7rem);
+    border-radius: 0.24rem;
+    .icon-compare{
+      @include widthAndHeight(0.12rem,0.45rem );
+      background-color: #01D295;
+      border-radius: 0.5rem;
+      margin: 0.05rem 0.2rem 0 0 ;
+    }
+    .title-compare{
+      font-size: 0.5rem;
+      font-weight: 600;
+    }
+    .compare-conclude{
+      @include widthAndHeight(8.5rem,0.5rem );
+      margin: 0 auto;
+      font-size: 0.35rem;
+      color:#856450;
+      font-weight: 600
+    }
+    .chartView-compare{
+      @include widthAndHeight(8.6rem,5rem );
+      margin: 0 auto;
+    }
+  }
+}

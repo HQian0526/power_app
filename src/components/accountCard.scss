@@ -1,0 +1,47 @@
+.accountCard{
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top,#333333,#323031) no-repeat;
+}
+/* align-items垂直居中 */
+/* justify-content水平居中 */
+.account-view {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+.headimg {
+  width: 60px;
+  height: 60px;
+  border: 1px solid;
+  border-color: #666666;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+.nickname {
+  width: 260px;
+  height: 50px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.names,
+.level {
+  height: 50%;
+  color: #f8ebe1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.levelfont{
+  font-size: 15px;
+}
+.progress{
+  width: 99%;
+}
+.icon-arrowright{
+  font-size: 25px;
+  color: #f8ebe1;
+  margin-right: 10px;
+}
+

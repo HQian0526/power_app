@@ -1,0 +1,145 @@
+
+.store {
+  @include widthAndHeight(100%, 100%);
+  @include bg-image("~@/assets/store/bg0");
+  .store-top{
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    @include rowOrColumn(row, space-between, center, center);
+    .store-none{
+      @include widthAndHeight(2rem, 1rem)
+    }
+    .xy-store{
+      @include widthAndHeight(4.5rem, 1.5rem);
+      @include bg-image("~@/assets/store/title");
+    }
+    .store-money{
+      @include widthAndHeight(2.2rem, 1.7rem);
+      .money-border{
+        @include widthAndHeight(1.6rem, 0.8rem);
+        margin:  0 auto;
+        border: 1px solid #fff;
+        border-radius: 1rem;
+        margin-top: 0.6rem;
+        background: rgba(255, 255, 255, 0.42);
+        @include rowOrColumn(row, space-around, center, center);
+        .money-num{
+          color:#fff;
+          font-size: 0.4rem;
+        }
+      }
+    }
+  }
+  .tab-none{
+    @include widthAndHeight(8rem, 2rem);
+  }
+  .tab{
+    border: 1px solid #fff;
+    border-radius: 2rem;
+    @include widthAndHeight(8rem, 1.2rem);
+    margin:0 auto;
+    @include rowOrColumn(row, space-around, center, center);
+    font-size: 0.45rem;
+    color: #fff;
+    font-weight: bold;
+    .tab-page,.tab-page-choose{
+      border-radius: 2rem;
+      @include widthAndHeight(2.5rem, 1rem);
+      @include rowOrColumn(column, center, center, center);
+    }
+    .tab-page-choose{
+      background-color: #fff;
+      color: #09B5A1;
+    }
+  }
+  .store-xh{
+    overflow: auto;
+    .box{
+      @include widthAndHeight(7.5rem,3.8rem);
+      @include bg-image("~@/assets/store/box");
+      margin: 0 auto;
+      margin-bottom: -0.8rem;
+    }
+    .green-store{
+      padding-bottom: 0.5rem;
+      @include widthAndHeight(9rem,5rem);
+      margin: 0 auto;
+    .green-store-top{
+      border-bottom-right-radius: 0.5rem 0.5rem;
+      border-bottom-left-radius: 0.5rem 0.5rem;
+      @include widthAndHeight(9rem,1rem);
+      @include bg-image("~@/assets/store/green-store");
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .green-store-body{
+      @include widthAndHeight(8rem,4rem);
+      margin: 0 auto;
+      position: relative;
+      bottom: 0.6rem;
+      .green-store-middle{
+        @include widthAndHeight(8rem,2.8rem);
+        background-color: #F4FAD4;
+        @include rowOrColumn(column, center, center, center);
+      }
+      .green-store-bottom{
+        @include widthAndHeight(8rem,1.2rem);
+        background-color: #6EF8AA;
+        border-bottom-left-radius: 0.5rem 0.5rem;
+        border-bottom-right-radius: 0.5rem 0.5rem;
+        @include rowOrColumn(row, space-around, center, center);
+        .xh-name{
+          @include rowOrColumn(row, center, center, center);
+          font-size: 0.4rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .yellow-store{
+    padding-bottom: 0.5rem;
+    @include widthAndHeight(9rem,5rem);
+    margin: 0 auto;
+    .yellow-store-top{
+      border-bottom-right-radius: 0.5rem 0.5rem;
+      border-bottom-left-radius: 0.5rem 0.5rem;
+      @include widthAndHeight(9rem,1rem);
+      @include bg-image("~@/assets/store/yellow-store");
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .yellow-store-body{
+      @include widthAndHeight(8rem,4rem);
+      margin: 0 auto;
+      position: relative;
+      bottom: 0.6rem;
+      .yellow-store-middle{
+        @include widthAndHeight(8rem,2.8rem);
+        background-color: #F4FAD4;
+        @include rowOrColumn(column, center, center, center);
+      }
+      .yellow-store-bottom{
+        @include widthAndHeight(8rem,1.2rem);
+        background-color: #FFE798;
+        border-bottom-left-radius: 0.5rem 0.5rem;
+        border-bottom-right-radius: 0.5rem 0.5rem;
+        @include rowOrColumn(row, space-around, center, center);
+        .xh-name{
+          @include rowOrColumn(row, center, center, center);
+          font-size: 0.4rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  }
+  .money-icon{
+    @include widthAndHeight(0.5rem, 0.5rem);
+    @include bg-image("~@/assets/store/money");
+  }
+}

@@ -1,0 +1,123 @@
+.userInfo {
+  .top-back{
+    margin:0 auto;
+    @include widthAndHeight(10rem, 4.5rem);
+    background: -webkit-linear-gradient(left, #3ED1B2, #63D0E0) no-repeat;
+    border-bottom-left-radius: 60% 20%;
+    border-bottom-right-radius: 60% 20%;
+    .top-icon{
+      padding-top: 0.48rem;
+      text-align: right;
+      font-size: 0.65rem;
+      letter-spacing: 0.3rem;
+      color:#fff
+    }
+    .top-info{
+      position: relative;
+      top:0.5rem;
+      background-color: #fff;
+      border-radius: 0.24rem;
+      box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+      margin:0 auto;
+      @include widthAndHeight(9rem, 4.5rem);
+      .top-info-head{
+        padding-top: 0.2rem;
+        @include widthAndHeight(9rem, 2rem);
+        @include rowOrColumn(row, center, center, center);
+        .top-info-left{
+          margin-top: 0.1rem;
+          @include widthAndHeight(3rem, 2rem);
+          @include rowOrColumn(row, center, center, center);
+          .top-info-img{
+            @include widthAndHeight(1.8rem, 1.8rem);
+            border-radius: 50%;
+            border:1px solid #999999;
+          }
+        }
+        .top-info-right{
+          @include widthAndHeight(6rem, 1.8rem);
+          .top-info-nickname{
+            height: 0.7rem;
+            font-size: 0.45rem;
+          }
+          .top-info-introduce{
+            margin-top: 0.1rem;
+            height: 0.5rem;
+            font-size: 0.35rem;
+            color:#999999;
+          }
+          .top-info-province{
+            margin-top: 0.1rem;
+            height: 0.6rem;
+            font-size: 0.35rem;
+            color:#999999;
+          }
+        }
+        .top-info-end{
+          @include widthAndHeight(1rem, 2rem);
+          @include rowOrColumn(row, center, center, center);
+          font-size: 0.45rem;
+          color:#999999;
+          .icon-arrowright{
+            font-size: 0.6rem;
+          }
+        }
+      }
+      .top-info-like{
+        margin-top: 0.3rem;
+        @include widthAndHeight(9rem, 2rem);
+        @include rowOrColumn(row, center, center, center);
+        .info-great{
+          @include widthAndHeight(3rem, 2rem);
+          @include rowOrColumn(column, center, center, center);
+          font-size: 0.45rem;
+          .info-great-number{
+            color:#333333;
+          }
+          .info-great-text{
+            color:#666666;
+          }
+        }
+      }
+    }
+  }
+  .xy-sociation{
+    margin:0 auto;
+    @include widthAndHeight(9rem, 2rem);
+    margin-top: 2.2rem;
+  }
+  .xy-orderAndInvite{
+    margin:0 auto;
+    @include widthAndHeight(9rem, 2rem);
+    margin-top: 0.5rem;
+    @include rowOrColumn(row,space-between ,center ,center );
+    .order{
+      @include widthAndHeight(48%, 2rem);
+    }
+    .invite{
+      @include widthAndHeight(48%, 2rem);
+    }
+  }
+  .xy-myHome{
+    background-color: #fff;
+    margin:0 auto;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+    @include widthAndHeight(9rem, 5rem);
+    border-radius: 0.24rem;
+    .van-cell__title{
+      font-size: 0.4rem;
+      font-weight: bold;
+    }
+    .non-photo{
+      @include rowOrColumn(row, center, center, center);
+      margin-top: 0.5rem;
+    }
+    .non-photo-tip{
+      @include rowOrColumn(row, center, center, center);
+      font-size: 0.3rem;
+      margin-top: 0.2rem;
+      color: #999999;
+    }
+  }
+}

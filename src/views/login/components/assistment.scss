@@ -1,0 +1,15 @@
+.assistment {
+  margin:0 auto;
+  @include widthAndHeight(92%, 10rem);
+  margin-top: 0.2rem;
+  text-indent:2em;
+  letter-spacing: 0.02rem;
+  overflow-y: auto;
+  .fontFat{
+    font-weight: bold;
+  }
+  .fontthin{
+    margin-top: 0.2rem;
+  }
+}
+

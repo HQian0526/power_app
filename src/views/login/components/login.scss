@@ -1,0 +1,104 @@
+//div自定义宽高
+@mixin widthAndHeight($w, $h) {
+  width: $w;
+  height: $h;
+}
+
+//div设置横向排列或竖排排列
+@mixin rowOrColumn($order, $justifyContent, $alignContent, $alignItems) {
+  display: flex;
+  flex-direction: $order;
+  justify-content: $justifyContent;
+  align-content: $alignContent;
+  align-items: $alignItems;
+}
+
+//文字样式
+@mixin fontStyle($color, $size, $weight) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  text-align: center;
+}
+// background: url("~@/assets/login/green-long.png") no-repeat;
+.login {
+  .back-ground{
+    @include widthAndHeight(100%,6.5rem);
+    @include bg-image("~@/assets/login/login-bg");
+  }
+  .green-long{
+    margin: 0 auto;
+    margin-top: 0.4rem;
+    @include widthAndHeight(9rem,1rem);
+    @include bg-image("~@/assets/login/green-long");
+    border-radius: 0.24rem;
+  }
+  .login-form{
+    margin: 0 auto;
+    @include widthAndHeight(8rem,7rem);
+    position: relative;
+    bottom: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+    .login-input{
+      margin: 0 auto;
+      @include widthAndHeight(8rem,7rem);
+      padding-top: 0.5rem;
+      .icon-acount{
+        color:#43DCBE ;
+        font-weight: bold;
+      }
+      .icon-password{
+        color:#43DCBE ;
+        font-weight: bold;
+        margin-top: 0.1rem;
+      }
+      .login-tip{
+        margin: 0 auto;
+        @include widthAndHeight(6.5rem,auto);
+        font-size: 0.05rem;
+        color: #999999;
+      }
+      .login-button{
+        margin: 0 auto;
+        @include widthAndHeight(6.5rem,auto);
+        margin-top: 0.5rem;
+        .van-button--default{
+          border-radius: 0.24rem;
+        }
+      }
+      .login-agreement{
+        margin: 0 auto;
+        @include widthAndHeight(6.5rem,auto);
+        margin-top: 0.3rem;
+        display: flex;
+        flex-direction: row;
+        .van-checkbox__label{
+          color:#999999
+        }
+        .agreement{
+          color:#999999;
+          font-size: 0.1rem;
+          display: flex;
+          flex-direction: row;
+          margin-left: 0.1rem;
+          .agreement-content{
+            color:#2F9CEB;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .content-title{
+    font-size: 0.45rem;
+    font-weight: bold;
+  }
+  .van-dialog__confirm{
+    background-color:#61D8C1 ;
+  }
+  .van-dialog__cancel{
+    background-color:#EAFFFB ;
+  }
+}
+
