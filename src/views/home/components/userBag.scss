@@ -1,0 +1,49 @@
+.wrapper{
+  @include widthAndHeight(100%,10rem);
+  .tabs{
+    @include widthAndHeight(100%,1rem);
+    @include rowOrColumn(row,space-between,center,center);
+    .tabs-item,.tabs-item-choose{
+      font-size: 0.35rem;
+      @include widthAndHeight(50%,1rem);
+      @include rowOrColumn(column,center,center,center);
+      border-bottom:#01AA8E 0.02rem solid;
+    }
+    .tabs-item-choose{
+      background-color: #01AA8E;
+      color: #fff;
+    }
+  }
+  .tab-item-left,.tab-item-right{
+    @include widthAndHeight(7rem,9rem);
+    margin:0 auto;
+    overflow-y: auto;
+    margin-top: 0.1rem;
+    .grid-font{
+      font-size: 0.2rem;
+      .rest-num{
+        color: #01AA8E;
+      }
+    }
+    .tab-bottom{
+      @include widthAndHeight(100%,1rem);
+      font-size: 0.3rem;
+      color: #999999;
+      text-align: center;
+      margin-top: 0.2rem;
+    }
+  }
+  // 隐藏滚动条
+  .tab-item-left::-webkit-scrollbar,.tab-item-right::-webkit-scrollbar{
+    display: none;
+  }
+  .use-tip{
+    font-size: 0.3rem;
+  }
+}
+.van-dialog__confirm{
+  background-color:#61D8C1 ;
+}
+.van-dialog__cancel{
+  background-color:#EAFFFB ;
+}

@@ -52,18 +52,21 @@
       </div>
     </div>
     
-
+    <!-- 签到界面 -->
     <daily-sign :visible="data.showSign" @resetTab="resetTab" :intoData="data.intoData"></daily-sign>
+    <!-- 背包界面 -->
+    <user-bag :visible="data.showBag" :bagInfo="data.bagInfo" @closeBag="closeBag"></user-bag>
   </div>
 </template>
 
 <script setup>
 import dailySign from "./dailySign"
+import userBag from "./userBag"
 import { getCurrentInstance, reactive, onMounted, ref, onBeforeUnmount } from "vue";
 import { Dialog, Toast } from "vant";
 import { numFilter } from "@/filter/filter.js";
 import { selectUserInfo } from "@/api/about";
-import { userSign } from "@/api/home";
+import { userSign,openUserBag } from "@/api/home";
 import * as echarts from "echarts";
 const home = ref();
 const mainFunc = ref();
@@ -75,7 +78,9 @@ const data = reactive({
   mainFuncHeight: $instanceToBottom(mainFunc._value),
   chart_userInfo: null,
   showSign:false,
-  intoData:[]
+  showBag:false,
+  intoData:[],
+  bagInfo:[],
 });
 onMounted(() => {
   data.storeHeight = $instanceToBottom(home._value);
@@ -108,16 +113,21 @@ async function getUserInfo() {
   );
 }
 
-//重置签到
+//关闭签到页面
 function resetTab(){
   data.showSign = false
 }
 
+//关闭背包页面
+function closeBag(){
+  data.showBag = false
+}
+
 function tabButton(i){
+  let token = JSON.parse(localStorage.getItem("token")) 
   switch(i){
     //签到
     case 0:
-      let token = JSON.parse(localStorage.getItem("token")) 
       userSign({ userId:token.userId }).then((res) => {
         if(res.code===0){
           data.intoData = res.content.list
@@ -126,15 +136,24 @@ function tabButton(i){
           Toast("今日已经签过到了~")
         }
       })
-      
       break;
     //背包
     case 1:
-      Toast("敬请期待！")
+    // data.showBag = true
+      openUserBag({ userId:token.userId,typeId:10000 }).then((res) => {
+        if(res.code===0){
+          data.bagInfo = JSON.parse(JSON.stringify(res.content.list)) 
+          data.showBag = true
+        }else{
+          Toast("背包打开失败，请重试~")
+        }
+      })
+      
       break;
     //排行
     case 2:
-      Toast("敬请期待！")
+    data.showSign = true
+      // Toast("敬请期待！")
       break;
     //分享
     case 3:
@@ -152,9 +171,9 @@ function initChart_userInfo() {
     document.getElementById("chartView-userInfo")
   );
   const lineStyle = {
-  width: 0.3,
-  opacity: 0.6
-};
+    width: 0.3,
+    opacity: 0.6
+  };
   data.chart_userInfo.setOption({
     // backgroundColor: '#83E0DD',
   textStyle:{

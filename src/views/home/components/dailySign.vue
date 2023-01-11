@@ -1,5 +1,5 @@
 <template>
-    <van-dialog v-model:show="data.show" show-cancel-button :show-confirm-button="data.showConfirm" cancel-button-text="关闭" @cancel="cancelDailySign" cancel-button-color="#01AA8E">
+    <van-dialog v-model:show="data.show" show-confirm-button confirm-button-text="关闭" @confirm="cancelDailySign" confirm-button-color="#01AA8E" theme="round-button">
       <template #title>
         <div class="content-title">签到成功!</div>
       </template>
@@ -8,10 +8,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, reactive, onMounted, ref, onBeforeUnmount, watch, defineEmits, nextTick } from "vue";
-import { Dialog, Toast } from "vant";
-import { numFilter } from "@/filter/filter.js";
-import { selectUserInfo } from "@/api/about";
+import { reactive, onMounted, onBeforeUnmount, watch, defineEmits, nextTick } from "vue";
 import * as echarts from "echarts";
 const emit = defineEmits(["resetTab",]);
 
@@ -32,10 +29,6 @@ const props = defineProps({
     type: Array,
     default: ()=>[]
   }
-});
-
-onMounted(() => {
-  
 });
 
 //离开该页面时取消渲染
@@ -152,7 +145,7 @@ watch(
       let perDay = ''
       if(props.intoData.length>0){
         for (let i = 0; i < days; i++) {
-          perDay = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + (i + 1>9?i+1:'0'+(i+1))
+          perDay = date.getFullYear() + "-" + (date.getMonth() + 1>9?date.getMonth() + 1:'0'+(date.getMonth() + 1)) + "-" + (i + 1>9?i+1:'0'+(i+1))
           data.dateList[i] = [perDay,0];
           for(let j = 0;j<props.intoData.length;j++){
             let signday = props.intoData[j].signTime.split('T')[0]
@@ -167,7 +160,6 @@ watch(
           data.dateList[i] = [perDay,0];
         }
       }
-      
       nextTick(() => {
         initChart_calendar();
       })

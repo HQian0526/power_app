@@ -12,4 +12,8 @@
     margin-top: 0.2rem;
   }
 }
+// 隐藏滚动条
+.assistment::-webkit-scrollbar{
+  display: none;
+}
 
