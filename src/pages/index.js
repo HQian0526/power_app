@@ -38,6 +38,12 @@ const routes = [
     component: () => import('@/views/userInfo/components/userInfo.vue'),
     meta: { needLogin:true }
   },
+  {
+    path: '/rankList',
+    name: 'rankList',
+    component: () => import('@/views/home/components/rankList.vue'),
+    meta: { needLogin:true }
+  },
 ]
 
 export const router = createRouter({

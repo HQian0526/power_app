@@ -1,21 +1,23 @@
 <template>
   <div id="app">
       <div id="content" :style="{height:data.viewHeight}"><router-view /></div>
-      <div v-show="$route.name!=='login'" class="bottom-nav">
-        <van-tabbar route>
-          <van-tabbar-item replace to="/home" icon="home-o"
-            >星萤</van-tabbar-item
-          >
-          <van-tabbar-item replace to="/analyse" icon="medal-o"
-            >数据分析</van-tabbar-item
-          >
-          <van-tabbar-item replace to="/store" icon="shop-o"
-            >商店</van-tabbar-item
-          >
-          <van-tabbar-item replace to="/userInfo" icon="user-o"
-            >个人中心</van-tabbar-item
-          >
-        </van-tabbar>
+      <div class="bottom-nav">
+        <router-link class="nav-home" :to="{path:'/home'}" @click="changeView(0)">
+          <div :class="data.viewIndex===0?'iconfont icon-home icon-choose':'iconfont icon-home'"></div>
+          <div class="nav-name">星萤</div>
+        </router-link>
+        <router-link class="nav-analyse" :to="{path:'/analyse'}" @click="changeView(1)">
+          <div :class="data.viewIndex===1?'iconfont icon-analyse icon-choose':'iconfont icon-analyse'"></div>
+          <div class="nav-name">数据分析</div>
+        </router-link>
+        <router-link class="nav-shop" :to="{path:'/store'}" @click="changeView(2)">
+          <div :class="data.viewIndex===2?'iconfont icon-shop icon-choose':'iconfont icon-shop'"></div>
+          <div class="nav-name">商店</div>
+        </router-link>
+        <router-link class="nav-me" :to="{path:'/userInfo'}" @click="changeView(3)">
+          <div :class="data.viewIndex===3?'iconfont icon-me icon-choose':'iconfont icon-me'"></div>
+          <div class="nav-name">我的</div>
+        </router-link>
       </div>
   </div>
 </template>
@@ -26,7 +28,12 @@ const { proxy } = getCurrentInstance();
 const data = reactive({
   isLogin: false,
   viewHeight:proxy.$viewHeight,
+  viewIndex:0,
 });
+
+function changeView(num){
+  data.viewIndex = num
+}
 
 </script>
 

@@ -1,11 +1,11 @@
 <template>
-  <div class="analyse">
-    <div class="calendar">
-      <van-cell value="2022-12" arrow-direction="down" is-link>
-        <template #icon><div class="icon-calendar"></div></template>
-        <template #title><div class="title-calendar">打卡日历</div></template>
+  <div class="analyse" ref="analyse" :style="{height:data.analyseHeight}">
+    <div class="power">
+      <van-cell>
+        <template #icon><div class="icon-power"></div></template>
+        <template #title><div class="title-power">本月学习雷达</div></template>
       </van-cell>
-      <div id="chartView-calendar" class="chartView-calendar"></div>
+      <div id="chartView-userInfo" class="chartView-userInfo"></div>
     </div>
 
     <div class="today-data">
@@ -66,6 +66,14 @@
       <div class="compare-conclude">在9月22号这天最努力，完成5个小时专注!</div>
       <div id="chartView-compare" class="chartView-compare"></div>
     </div>
+
+    <div class="calendar">
+      <van-cell value="2022-12" arrow-direction="down" is-link>
+        <template #icon><div class="icon-calendar"></div></template>
+        <template #title><div class="title-calendar">打卡日历</div></template>
+      </van-cell>
+      <div id="chartView-calendar" class="chartView-calendar"></div>
+    </div>
   </div>
 </template>
 
@@ -73,17 +81,22 @@
 import { onActivated, onMounted, ref, onBeforeUnmount, markRaw } from "vue";
 import { reactive, getCurrentInstance } from "vue";
 import * as echarts from "echarts";
-
+const _this = getCurrentInstance();
+const { $instanceToBottom } = _this.appContext.config.globalProperties;
+const analyse = ref()
 const data = reactive({
+  chart_userInfo: null,
   chart_calendar: null,
   chart_effict: null,
   chart_compare: null,
   compareData:[1,3,2,5,7,4,8],
   dateList: [],
-  yearAndMonth:''
+  yearAndMonth:'',
+  analyseHeight:$instanceToBottom(analyse._value),
 });
 
 onMounted(() => {
+  data.analyseHeight = $instanceToBottom(analyse._value)
   let date = new Date();
   let days = getMonthLength(date.getFullYear(), date.getMonth() + 1);
   let month = (date.getMonth() + 1)>9?date.getMonth() + 1:'0'+(date.getMonth() + 1)
@@ -94,6 +107,7 @@ onMounted(() => {
       i * 10,
     ];
   }
+  initChart_userInfo();
   initChart_calendar();
   initChart_effict();
   initChart_compare();
@@ -101,6 +115,13 @@ onMounted(() => {
 
 //离开该页面时取消渲染
 onBeforeUnmount(() => {
+  if (
+    data.chart_userInfo != null &&
+    data.chart_userInfo != "" &&
+    data.chart_userInfo != undefined
+  ) {
+    data.chart_userInfo.dispose();
+  }
   if (
     data.chart_calendar != null &&
     data.chart_calendar != "" &&
@@ -144,6 +165,76 @@ function onClickTab(val){
       break;
   }
   initChart_compare();
+}
+
+//个人雷达图
+function initChart_userInfo() {
+  const dataBJ = [
+  [250, 200, 250, 4, 180, 1],
+];
+  data.chart_userInfo = echarts.init(
+    document.getElementById("chartView-userInfo")
+  );
+  const lineStyle = {
+    width: 0.3,
+    opacity: 0.6
+  };
+  data.chart_userInfo.setOption({
+    // backgroundColor: '#83E0DD',
+  textStyle:{
+    fontSize:12,
+    opacity:0.8,
+  },
+  radar: {
+    indicator: [
+      { name: '学习时长', max: 300 },
+      { name: '专注', max: 250 },
+      { name: '成长', max: 300 },
+      { name: '毅力', max: 5 },
+      { name: '成就', max: 200 },
+    ],
+    shape: 'circle',
+    splitNumber: 5,
+    axisName: {
+      color:'#1e1e1e'
+    },
+    splitLine: {
+      lineStyle: {
+        color: [
+          'rgba(92,92,92, 0.1)',
+          'rgba(92,92,92, 0.1)',
+          'rgba(92,92,92, 0.1)',
+          'rgba(92,92,92, 0.1)',
+          'rgba(92,92,92, 0.1)'
+        ].reverse()
+      }
+    },
+    splitArea: {
+      show: false
+    },
+    axisLine: {
+      lineStyle: {
+        color: 'rgba(92,92,92, 0.1)'
+      }
+    },
+    nameGap:6,
+  },
+  series: [
+    {
+      name: 'Beijing',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataBJ,
+      symbol: 'none',
+      itemStyle: {
+        color: '#61D8C1'
+      },
+      areaStyle: {
+        opacity: 0.6
+      }
+    },
+  ]
+  });
 }
 
 function initChart_calendar() {

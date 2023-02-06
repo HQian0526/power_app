@@ -1,4 +1,27 @@
 .analyse {
+  overflow: auto;
+  .power{
+    background-color: #fff;
+    margin:0 auto;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(151, 149, 149, 0.2), 0 6px 20px 0 rgba(143, 141, 141, 0.19);
+    @include widthAndHeight(9rem,5.8rem);
+    border-radius: 0.24rem;
+    .icon-power{
+      @include widthAndHeight(0.12rem,0.45rem );
+      background-color: #01AA8E;
+      border-radius: 0.5rem;
+      margin: 0.05rem 0.2rem 0 0 ;
+    }
+    .title-power{
+      font-size: 0.5rem;
+      font-weight: 600;
+    }
+    .chartView-userInfo{
+      @include widthAndHeight(8.6rem,4.8rem );
+      margin: 0 auto;
+    }
+  }
   .calendar{
     background-color: #fff;
     margin:0 auto;
@@ -19,15 +42,6 @@
     .chartView-calendar{
       @include widthAndHeight(8.6rem,8.8rem );
       margin: 0 auto;
-    }
-    .calendar-introduce{
-      @include widthAndHeight(8.6rem,0.8rem );
-      margin: 0 auto;
-      .introduce{
-        font-size: 0.3rem;
-        color:#999999;
-        margin-left: 0.2rem;
-      }
     }
   }
   .today-data{
@@ -178,4 +192,8 @@
       margin: 0 auto;
     }
   }
+}
+// 隐藏滚动条
+.analyse::-webkit-scrollbar{
+  display: none;
 }

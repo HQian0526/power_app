@@ -7,7 +7,7 @@
         </div>
         <div class="tab-item-left">
           <van-grid border square :column-num="3" >
-            <van-grid-item v-for="(item,index) in data.bagList" @click="useGood(item.goodsName)">
+            <van-grid-item v-for="(item,index) in data.bagList" @click="useGood(item)">
               <template #icon>
                 <div class="grid-img">
                   <van-image
@@ -25,8 +25,10 @@
           <div class="tab-bottom">已经到底部了~</div>
         </div>
     </div>
-    <van-dialog v-model:show="data.confirmUse" show-cancel-button confirm-button-text="同意" @confirm="checkUse" @cancel="cancelUse" cancel-button-color="#01AA8E" confirm-button-color="#fff">
-      <div class="use-tip">确认使用一个【{{data.goodName}}】？</div>
+    <van-dialog v-model:show="data.confirmUse" show-cancel-button confirm-button-text="使用" @confirm="checkUse" cancel-button-color="#01AA8E" confirm-button-color="#fff">
+      <div class="use-tip">确定使用【{{data.goodName}}】？</div>
+      <div class="use-effect">效果：{{data.goodIntroduce}}</div>
+      <div class="use-num">使用数量：<van-stepper v-model="value" disable-input /></div>
     </van-dialog>
   </van-dialog>
 </template>
@@ -55,6 +57,10 @@ const data = reactive({
   bagList:[],
   confirmUse:false,
   goodName:'',
+  goodIntroduce:'',
+  useGoodInfo:{
+    
+  }
 });
 
 const closeBag = () => {
@@ -62,17 +68,15 @@ const closeBag = () => {
   em("closeBag");
 };
 
-function useGood(name){
-  data.goodName = name
+function useGood(item){
+  data.goodName = item.goodsName
+  data.goodIntroduce = item.goodsIntroduce
   data.confirmUse = true
 }
 
+//使用物品
 function checkUse(){
 
-}
-
-function cancelUse(){
-  
 }
 
 function changeTabs(num){

@@ -1,5 +1,5 @@
 <template>
-  <div class="store">
+  <div class="store" ref="store" :style="{height:data.backHeight}">
     <div class="store-top">
       <div class="store-none"></div>
       <div class="xy-store"></div>
@@ -63,6 +63,7 @@
 import { reactive, onMounted, getCurrentInstance, ref} from "vue";
 import { store_xh_list, store_zb_list, store_sw_list } from "@/views/store/config/config"
 const store_xh = ref()
+const store = ref()
 const _this = getCurrentInstance();
 const { $instanceToBottom } = _this.appContext.config.globalProperties;
     const data = reactive({
@@ -70,11 +71,15 @@ const { $instanceToBottom } = _this.appContext.config.globalProperties;
       boxUrl:require("@/assets/store/box.png"),
       tabIndex:0,
       storeHeight:$instanceToBottom(store_xh._value),
+      backHeight:$instanceToBottom(store._value),
       store_good_list:store_xh_list,
     });
 
 onMounted(() => {
+  data.backHeight = $instanceToBottom(store._value)
   data.storeHeight = $instanceToBottom(store_xh._value)
+  console.log("height1",data.backHeight)
+  console.log("height2",data.storeHeight)
 })
 
 //切换tab页

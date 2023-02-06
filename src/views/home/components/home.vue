@@ -1,7 +1,10 @@
 <template>
   <div id="homes" class="home" ref="home" :style="{ height: data.storeHeight }">
     <div class="topInfo">
-      <div class="coin-none"></div>
+      <div class="coin-level">
+        <div class="level-icon">5</div>
+        <div class="level-progress"><van-progress :percentage="50" stroke-width="15" color="#4EC5E4" track-color="#ADECEB"/></div>
+      </div>
       <div class="coin-money">
         <div class="coin-money-left"></div>
         <div class="coin-middle">60</div>
@@ -18,7 +21,7 @@
         <div class="banner-title1">我们负责坚持</div>
         <div class="banner-title2">剩下的交给时间</div>
       </div>
-      <div id="chartView-userInfo" class="chartView-userInfo"></div>
+      <div id="chartView-effict" class="chartView-effict"></div>
     </div>
     <div class="tabbuton">
       <div class="tabbutton-sign" @click="tabButton(0)">
@@ -44,7 +47,34 @@
       </div>
       <div class="other-func">
         <div class="other-left">
-          <div class="other-left-font">敬请期待</div>
+          <div class="top-silkbag">
+            <div class="silkbag-one">
+              <div>
+                <img style="width: 2rem;height: 2rem;" :src="require('@/assets/home/silkbag.png')" :srcset="require('@/assets/home/silkbag@2x.png')+' 2x,'+require('@/assets/home/silkbag@3x.png')+' 3x'"/>
+              </div>
+            </div>
+            <div class="silkbag-two">
+              <div>
+                <img style="width: 2rem;height: 2rem;" :src="require('@/assets/home/silkbag.png')" :srcset="require('@/assets/home/silkbag@2x.png')+' 2x,'+require('@/assets/home/silkbag@3x.png')+' 3x'"/>
+              </div>
+            </div>
+          </div>
+          <div class="tabbutton-gift" @click="openSilk">
+            <div class="sign-icon"></div>
+            <div>开启锦囊</div>
+          </div>
+          <div class="bottom-silkbag">
+            <div class="silkbag-three">
+              <div>
+                <img style="width: 2rem;height: 2rem;" :src="require('@/assets/home/silkbag.png')" :srcset="require('@/assets/home/silkbag@2x.png')+' 2x,'+require('@/assets/home/silkbag@3x.png')+' 3x'"/>
+              </div>
+            </div>
+            <div class="silkbag-four">
+              <div>
+                <img style="width: 2rem;height: 2rem;" :src="require('@/assets/home/silkbag.png')" :srcset="require('@/assets/home/silkbag@2x.png')+' 2x,'+require('@/assets/home/silkbag@3x.png')+' 3x'"/>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="other-right">
           <div class="other-right-font">活动中心</div>
@@ -64,7 +94,7 @@ import dailySign from "./dailySign"
 import userBag from "./userBag"
 import { getCurrentInstance, reactive, onMounted, ref, onBeforeUnmount } from "vue";
 import { Dialog, Toast } from "vant";
-import { numFilter } from "@/filter/filter.js";
+import router from "@/pages/index";
 import { selectUserInfo } from "@/api/about";
 import { userSign,openUserBag } from "@/api/home";
 import * as echarts from "echarts";
@@ -76,7 +106,7 @@ const { $instanceToBottom } = _this.appContext.config.globalProperties;
 const data = reactive({
   storeHeight: $instanceToBottom(home._value),
   mainFuncHeight: $instanceToBottom(mainFunc._value),
-  chart_userInfo: null,
+  chart_effict: null,
   showSign:false,
   showBag:false,
   intoData:[],
@@ -87,17 +117,17 @@ onMounted(() => {
   data.mainFuncHeight = $instanceToBottom(mainFunc._value);
   console.log("xxx", data.storeHeight);
   getUserInfo();
-  initChart_userInfo();
+  initChart_effict();
 });
 
 //离开该页面时取消渲染
 onBeforeUnmount(() => {
   if (
-    data.chart_userInfo != null &&
-    data.chart_userInfo != "" &&
-    data.chart_userInfo != undefined
+    data.chart_effict != null &&
+    data.chart_effict != "" &&
+    data.chart_effict != undefined
   ) {
-    data.chart_userInfo.dispose();
+    data.chart_effict.dispose();
   }
 });
 
@@ -152,8 +182,9 @@ function tabButton(i){
       break;
     //排行
     case 2:
-    data.showSign = true
-      // Toast("敬请期待！")
+      router.push({
+        path: "/rankList",
+      });
       break;
     //分享
     case 3:
@@ -162,74 +193,93 @@ function tabButton(i){
   }
 };
 
-//个人雷达图
-function initChart_userInfo() {
-  const dataBJ = [
-  [250, 200, 250, 4, 180, 1],
-];
-  data.chart_userInfo = echarts.init(
-    document.getElementById("chartView-userInfo")
-  );
-  const lineStyle = {
-    width: 0.3,
-    opacity: 0.6
-  };
-  data.chart_userInfo.setOption({
-    // backgroundColor: '#83E0DD',
-  textStyle:{
-    fontSize:12,
-    opacity:0.8,
-  },
-  radar: {
-    indicator: [
-      { name: '学习时长', max: 300 },
-      { name: '专注', max: 250 },
-      { name: '成长', max: 300 },
-      { name: '毅力', max: 5 },
-      { name: '成就', max: 200 },
-    ],
-    shape: 'circle',
-    splitNumber: 5,
-    axisName: {
-      color:'#fff'
-    },
-    splitLine: {
-      lineStyle: {
-        color: [
-          'rgba(252, 252, 252, 0.1)',
-          'rgba(252, 252, 252, 0.2)',
-          'rgba(252, 252, 252, 0.4)',
-          'rgba(252, 252, 252, 0.6)',
-          'rgba(252, 252, 252, 0.8)',
-          'rgba(252, 252, 252, 1)'
-        ].reverse()
-      }
-    },
-    splitArea: {
-      show: false
-    },
-    axisLine: {
-      lineStyle: {
-        color: 'rgba(252, 252, 252, 0.5)'
-      }
-    },
-    nameGap:6,
-  },
-  series: [
-    {
-      name: 'Beijing',
-      type: 'radar',
-      lineStyle: lineStyle,
-      data: dataBJ,
-      symbol: 'none',
-      itemStyle: {
-        color: '#fff'
+function openRank(){
+  router.push({
+    path: "/rankList",
+  });
+}
+
+//剩余体力值
+function initChart_effict() {
+  data.chart_effict = echarts.init(document.getElementById("chartView-effict"));
+  data.chart_effict.setOption({
+    series: [
+      {
+        type: "gauge",    //类型：仪表盘
+        startAngle: 90,  //环形起点度数
+        endAngle: 450,    //环形终点度数
+        min: 0,
+        max: 100,
+        splitNumber:{
+          show:false  //不展示数字
+        },
+        radius: "100%",   //环形大小
+        center: ["50%", "50%"], //环形位置
+        itemStyle: {
+          color: "#fff",  //进度颜色
+          shadowColor: "#fff",  //进度条阴影颜色
+          shadowBlur: 3, //进度条阴影范围
+          shadowOffsetX: 1,//进度条阴影横向偏差
+          // shadowOffsetY: 2,//进度条阴影纵向偏差
+        },
+        progress: {
+          show: true,
+          roundCap: true,
+          width: 10,  //进度条肥瘦
+        },
+        pointer: {
+          show:false  //不展示指针
+        },
+        axisLine: {
+          roundCap: true,
+          lineStyle: {
+            color:[[1,'#ADECEB']],  //仪表盘环形背景颜色
+            width: 10, //背景肥瘦
+          },
+        },
+        axisTick: {
+          show:false, //不展示刻度环
+        },
+        splitLine: {
+          show:false, //不展示刻度
+        },
+        title: {
+          show: false,
+        },
+        //底部文字百分比样式
+        detail: {
+          lineHeight: 30,
+          height: 45,
+          borderRadius: 8,
+          offsetCenter: [0, "-10%"],
+          valueAnimation: true,
+          formatter: function (value) {
+            return "{value|" + value.toFixed(0) + "}{unit|%}\n"+"{intro|体力值}";
+          },
+          rich: {
+            value: {
+              fontSize: 20,
+              color: "#fff",
+            },
+            unit: {
+              fontSize: 20,
+              color: "#fff",
+              padding: [0, 0, 0, 10],
+            },
+            intro:{
+              fontSize: 14,
+              color: "#fff",
+            }
+          },
+        },
+        data: [
+          {
+            value: 75,
+            name:"体力值",
+          },
+        ],
       },
-      areaStyle: {
-        opacity: 0.6
-      }
-    },
-  ]
+    ],
   });
 }
 </script>

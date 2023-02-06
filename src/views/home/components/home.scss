@@ -1,12 +1,28 @@
 .home{
     background: -webkit-linear-gradient(bottom, #2CAADB, #98FFF8) no-repeat;
     .topInfo{
+        // border:1px dashed;
         @include rowOrColumn(row,space-between,center,center);
         @include widthAndHeight(9rem, 0.8rem);
         margin: 0 auto;
         padding-top: 0.3rem;
-        .coin-none{
-            @include widthAndHeight(5rem, 0.8rem);
+        .coin-level{
+            @include widthAndHeight(5rem, 1rem);
+            @include rowOrColumn(row,left,center,center);
+            .level-icon{
+                @include widthAndHeight(1.1rem, 1.1rem);
+                @include bg-image("~@/assets/home/medals");
+                @include rowOrColumn(column,center,center,center);
+                color:#fff;
+                font-size: 0.18rem;
+                font-weight: bolder;
+                z-index: 1;
+            }
+            .level-progress{
+                @include widthAndHeight(4rem, 0.4rem);
+                position: relative;
+                right: 0.4rem;
+            }
         }
         .coin-money,.coin-activity{
             @include widthAndHeight(1.8rem, 0.45rem);
@@ -29,7 +45,6 @@
             }
             .coin-middle{
                 color:#fff;
-                // border: 1px dashed;
                 font-size: 0.35rem;
                 @include widthAndHeight(0.55rem, 0.45rem);
             }
@@ -65,10 +80,8 @@
                 font-weight: bold;
             }
         }
-        .chartView-userInfo{
-            @include widthAndHeight(4.5rem,3.7rem);
-            // border: 1px dashed;
-            margin-top: 0.5rem;
+        .chartView-effict{
+            @include widthAndHeight(4.5rem,3.4rem);
         }
     }
     .tabbuton{
@@ -123,16 +136,51 @@
             margin: 0 auto;
             .other-left{
                 @include widthAndHeight(4.35rem, 5.6rem);
-                @include bg-image("~@/assets/home/other");
-                @include rowOrColumn(column,center,center,center);
-                .other-left-font{
-                    color:#fff;
-                    margin-top: 3rem;
-                    width: 4rem;
+                // @include rowOrColumn(column,space-between,center,center);
+                border-radius: 0.2rem;
+                background: -webkit-linear-gradient(bottom, #6CCFFF, #CAF0FE) no-repeat;
+                .top-silkbag{
+                    @include widthAndHeight(4.35rem, 2.8rem);
+                    @include rowOrColumn(row,space-between,center,center);
+                }
+                .bottom-silkbag{
+                    @include widthAndHeight(4.35rem, 2.8rem);
+                    @include rowOrColumn(row,space-between,center,center);
+                    position: relative;
+                    bottom: 2.2rem;
+                }
+                .silkbag-one,.silkbag-two,.silkbag-three,.silkbag-four{
+                    @include widthAndHeight(2.17rem, 2.8rem);
+                    @include rowOrColumn(column,center,center,center);
+                    border-radius: 0.2rem;
+                    background-color: #C0ECFE;
+                    border:0.01rem solid #4EC5E4;
+                }
+                .silkbag-one,.silkbag-two{
+                    background: -webkit-linear-gradient(bottom, #9CE0FE, #C6EEFE) no-repeat;
+                }
+                .silkbag-three,.silkbag-four{
+                    background: -webkit-linear-gradient(bottom, #6BCFFF, #9CE0FE) no-repeat;
+                }
+                .tabbutton-gift{
+                    float: left;
+                    @include rowOrColumn(row,center,center,center);
+                    background: -webkit-linear-gradient(bottom, #24B7E2, #3DDCD9) no-repeat;
+                    @include widthAndHeight(2.2rem, 2.2rem);
+                    border-radius: 5rem;
+                    font-size: 0.35rem;
+                    color: #fff;
                     font-weight: bold;
-                    font-size: 0.8rem;
-                    font-style: italic;
-                    text-align: center;
+                    position: relative;
+                    bottom: 1.1rem;
+                    left: 1.1rem;
+                    z-index: 10;
+                    .sign-icon{
+                        @include widthAndHeight(0.6rem,0.6rem)
+                    }
+                    .sign-icon{
+                        @include bg-image("~@/assets/home/silkbag-icon")
+                    }
                 }
             }
             .other-right{

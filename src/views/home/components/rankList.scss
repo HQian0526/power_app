@@ -1,0 +1,203 @@
+.rank{
+    background: -webkit-linear-gradient(bottom, #FFEDD6, #D0F1ED, #ABF2FF) no-repeat;
+    .title{
+        @include widthAndHeight(10rem,1.5rem);
+        @include rowOrColumn(row,space-around,center,center);
+        margin:0 auto;
+        .title-back,.title-null{
+            @include widthAndHeight(2rem,1.5rem);
+            @include rowOrColumn(column,center,center,center);
+            font-size: 0.5rem;
+            color:#666666;
+        }
+        .title-font{
+            @include widthAndHeight(6rem,1.5rem);
+            @include rowOrColumn(column,center,center,center);
+            font-size: 0.5rem;
+            font-weight: bold;
+            color:#fff;
+            letter-spacing: 0.1rem;
+        }
+    }
+    .tabs{
+        @include widthAndHeight(8.5rem,1rem);
+        @include rowOrColumn(row,space-between,center,center);
+        box-shadow: 2px 2px 2px 2px #6AE8FF;
+        margin:0 auto;
+        border-radius: 1rem;
+        border:0.01px solid #d1d1d1;
+        .tabs-country-none,.tabs-friend-none{
+            @include rowOrColumn(column,center,center,center);
+            @include widthAndHeight(4.22rem,1rem);
+            font-size: 0.5rem;
+            color:#16BBD3;
+        }
+        .tabs-country-choose,.tabs-friend-choose{
+            @include rowOrColumn(column,center,center,center);
+            @include widthAndHeight(4.22rem,1rem);
+            background-color: #fff;
+            border-radius: 1rem;
+            font-size: 0.5rem;
+            color:#0B384E;
+        }
+    }
+    .tips{
+        @include widthAndHeight(8.5rem,2rem);
+        margin:0 auto;
+        font-size: 0.36rem;
+        color:#1A7E90;
+        margin-top: 0.5rem;
+        font-weight: bold;
+        opacity: 0.6;
+        .tips-two{
+            margin: 0.4rem 2rem;
+        }
+    }
+    .best{
+        @include widthAndHeight(8.5rem,4.5rem);
+        @include rowOrColumn(row,space-between,center,center);
+        margin:0 auto;
+        .best-first{
+            @include widthAndHeight(2.8rem,3rem);
+            @include bg-image("~@/assets/home/winfirst");
+            @include rowOrColumn(column,center,center,center);
+            margin-bottom: 1.2rem;
+        }
+        .best-second{
+            @include widthAndHeight(2.6rem,3rem);
+            @include bg-image("~@/assets/home/winsecond");
+            @include rowOrColumn(column,center,center,center);
+            margin-top: 0.5rem;
+        }
+        .best-third{
+            @include widthAndHeight(2.6rem,3rem);
+            @include bg-image("~@/assets/home/winthird");
+            @include rowOrColumn(column,center,center,center);
+            margin-top: 0.5rem;
+        }
+        .best-second-num{
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: bolder;
+            position: relative;
+            bottom: 0.3rem;
+        }
+        .best-second-img{
+            @include widthAndHeight(1.2rem,1.2rem);
+        }
+        .best-second-name{
+            color:#0E3A3D;
+            font-size: 0.3rem;
+            font-weight: bold;
+            margin-top: 0.2rem;
+        }
+        .best-second-level{
+            @include widthAndHeight(1.2rem,1.2rem);
+            @include rowOrColumn(column,center,center,center);
+            margin-top: 0.2rem;
+            background-color: #A9D5CF;
+            border-radius: 1rem;
+            color:#fff;
+            font-size: 0.35rem;
+            font-weight: bold;
+        }
+    }
+    .ranklist{
+        @include widthAndHeight(9rem,9.6rem);
+        margin: 0.2rem auto;
+        background-color: #F7FAF6;
+        border-radius: 0.5rem;
+        .ranklist-detail{
+            @include widthAndHeight(9rem,1.2rem);
+            @include rowOrColumn(row,center,center,center);
+        }
+        .ranklist-detail-num{
+            @include widthAndHeight(0.8rem,1rem);
+            @include rowOrColumn(column,center,center,center);
+            font-size: 0.3rem;
+            font-weight: bold;
+        }
+        .ranklist-detail-imgurl{
+            @include widthAndHeight(1rem,1rem);
+            @include rowOrColumn(column,center,center,center);
+            @include widthAndHeight(1rem,1rem);
+        }
+        .ranklist-detail-nameAndLevel{
+            @include widthAndHeight(5rem,1rem);
+            @include rowOrColumn(row,left,center,center);
+            margin-left: 0.1rem;
+            color:#0E3A3D;
+            font-size: 0.3rem;
+            .ranklist-detail-name{
+                color:#4DACBF;
+                font-weight: bold;
+            }
+            .ranklist-detail-level{
+                @include widthAndHeight(1.2rem,0.5rem);
+                @include rowOrColumn(row,center,center,center);
+                background-color: #A9D5CF;
+                border-radius: 1rem;
+                color:#fff;
+                margin-left: 0.3rem;
+                font-size: 0.35rem;
+                font-weight: bold;
+            }
+        }
+        .ranklist-detail-time{
+            @include widthAndHeight(2rem,1rem);
+            @include rowOrColumn(column,center,center,center);
+            font-size: 0.3rem;
+            font-weight: bold;
+            color:#666666;
+        }
+    }
+    .myrank-detail{
+        @include widthAndHeight(9rem,1.2rem);
+        @include rowOrColumn(row,center,center,center);
+        background: -webkit-linear-gradient(bottom, #A986ED, #D3B5F7) no-repeat;
+        margin: 0 auto;
+        position: relative;
+        bottom: 1.2rem;
+        border-radius: 0.3rem;
+        .myrank-detail-num{
+            @include widthAndHeight(0.8rem,1rem);
+            @include rowOrColumn(column,center,center,center);
+            font-size: 0.3rem;
+            font-weight: bold;
+            color:#fff;
+        }
+        .myrank-detail-imgurl{
+            @include widthAndHeight(1rem,1rem);
+            @include rowOrColumn(column,center,center,center);
+            @include widthAndHeight(1rem,1rem);
+        }
+        .myrank-detail-nameAndLevel{
+            @include widthAndHeight(5rem,1rem);
+            @include rowOrColumn(row,left,center,center);
+            margin-left: 0.1rem;
+            color:#0E3A3D;
+            font-size: 0.3rem;
+            .myrank-detail-name{
+                color:#fff;
+                font-weight: bold;
+            }
+            .myrank-detail-level{
+                @include widthAndHeight(1.2rem,0.5rem);
+                @include rowOrColumn(row,center,center,center);
+                background-color: #D8C4F9;
+                border-radius: 1rem;
+                color:#fff;
+                margin-left: 0.3rem;
+                font-size: 0.35rem;
+                font-weight: bold;
+            }
+        }
+        .myrank-detail-time{
+            @include widthAndHeight(2rem,1rem);
+            @include rowOrColumn(column,center,center,center);
+            font-size: 0.3rem;
+            font-weight: bold;
+            color:#fff;
+        }
+    }
+}

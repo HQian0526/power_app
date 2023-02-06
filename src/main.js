@@ -7,7 +7,7 @@ import md5 from 'js-md5'
 import echarts from 'echarts'
 
 //注册全局组件
-import { Checkbox, CheckboxGroup, Radio, RadioGroup, Tag, Icon, Form, Field, Button, Image, Progress, Tabbar, TabbarItem, DropdownItem, DropdownMenu, Popover, Toast, Dialog, Swipe, SwipeItem, Card, Tab, Tabs, Cell, CellGroup, Overlay, Grid, GridItem, Pagination } from 'vant';
+import { Stepper, Checkbox, CheckboxGroup, Radio, RadioGroup, Tag, Icon, Form, Field, Button, Image, Progress, Tabbar, TabbarItem, DropdownItem, DropdownMenu, Popover, Toast, Dialog, Swipe, SwipeItem, Card, Tab, Tabs, Cell, CellGroup, Overlay, Grid, GridItem, Pagination } from 'vant';
 
 //获得div顶部距离页面底部的高度
 const instanceToBottom = (dom) => {
@@ -103,4 +103,5 @@ app.use(router)
     .use(RadioGroup)
     .use(Checkbox)
     .use(CheckboxGroup)
+    .use(Stepper)
     .mount('#app')
