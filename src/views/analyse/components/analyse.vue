@@ -1,5 +1,5 @@
 <template>
-  <div class="analyse" ref="analyse" :style="{height:data.analyseHeight}">
+  <div class="analyse">
     <div class="power">
       <van-cell>
         <template #icon><div class="icon-power"></div></template>
@@ -96,7 +96,7 @@ const data = reactive({
 });
 
 onMounted(() => {
-  data.analyseHeight = $instanceToBottom(analyse._value)
+  // data.analyseHeight = $instanceToBottom(analyse._value)
   let date = new Date();
   let days = getMonthLength(date.getFullYear(), date.getMonth() + 1);
   let month = (date.getMonth() + 1)>9?date.getMonth() + 1:'0'+(date.getMonth() + 1)

@@ -1,5 +1,6 @@
 <template>
-  <div id="homes" class="home" ref="home" :style="{ height: data.storeHeight }">
+  <div id="homes" class="home">
+     <!-- ref="home" :style="{ height: data.storeHeight }" -->
     <div class="topInfo">
       <div class="coin-level">
         <div class="level-icon">5</div>
@@ -113,7 +114,7 @@ const data = reactive({
   bagInfo:[],
 });
 onMounted(() => {
-  data.storeHeight = $instanceToBottom(home._value);
+  // data.storeHeight = $instanceToBottom(home._value);
   data.mainFuncHeight = $instanceToBottom(mainFunc._value);
   console.log("xxx", data.storeHeight);
   getUserInfo();

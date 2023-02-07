@@ -1,5 +1,4 @@
 .analyse {
-  overflow: auto;
   .power{
     background-color: #fff;
     margin:0 auto;
@@ -192,8 +191,4 @@
       margin: 0 auto;
     }
   }
-}
-// 隐藏滚动条
-.analyse::-webkit-scrollbar{
-  display: none;
 }

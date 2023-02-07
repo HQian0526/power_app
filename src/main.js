@@ -11,12 +11,13 @@ import { Stepper, Checkbox, CheckboxGroup, Radio, RadioGroup, Tag, Icon, Form, F
 
 //获得div顶部距离页面底部的高度
 const instanceToBottom = (dom) => {
-  console.log(dom)
+  console.log("dom",dom)
   let instanceRes = 0
   if(dom){
     let remRes =  setFontSize()
     instanceRes = (((window.innerHeight - (dom.offsetTop - window.pageYOffset))/remRes).toFixed(2)-1.5)+'rem'
   }
+  console.log("999",instanceRes)
   return instanceRes
 }
 

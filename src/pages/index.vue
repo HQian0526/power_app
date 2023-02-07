@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <div id="content" :style="{height:data.viewHeight}"><router-view /></div>
-      <div class="bottom-nav">
+      <div id="content" ref="content" :style="{height:data.viewHeight}"><router-view /></div>
+      <div class="bottom-nav" v-show="$route.name!=='login'">
         <router-link class="nav-home" :to="{path:'/home'}" @click="changeView(0)">
           <div :class="data.viewIndex===0?'iconfont icon-home icon-choose':'iconfont icon-home'"></div>
           <div class="nav-name">星萤</div>
@@ -23,13 +23,21 @@
 </template>
 
 <script setup>
-import { reactive, getCurrentInstance} from "vue";
-const { proxy } = getCurrentInstance();
+import { reactive, getCurrentInstance, onMounted, ref} from "vue";
+const _this = getCurrentInstance();
+const { $instanceToBottom } = _this.appContext.config.globalProperties;
+const content = ref()
 const data = reactive({
   isLogin: false,
-  viewHeight:proxy.$viewHeight,
+  viewHeight: $instanceToBottom(content._value),
   viewIndex:0,
 });
+
+onMounted(() => {
+  data.viewHeight = $instanceToBottom(content._value)
+  let token = JSON.parse(localStorage.getItem("token")) 
+  if(token!==null)data.isLogin = true
+})
 
 function changeView(num){
   data.viewIndex = num

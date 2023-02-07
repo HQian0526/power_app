@@ -1,5 +1,6 @@
 <template>
-  <div class="store" ref="store" :style="{height:data.backHeight}">
+  <div class="store">
+     <!-- ref="store" :style="{height:data.backHeight}" -->
     <div class="store-top">
       <div class="store-none"></div>
       <div class="xy-store"></div>
@@ -76,7 +77,7 @@ const { $instanceToBottom } = _this.appContext.config.globalProperties;
     });
 
 onMounted(() => {
-  data.backHeight = $instanceToBottom(store._value)
+  // data.backHeight = $instanceToBottom(store._value)
   data.storeHeight = $instanceToBottom(store_xh._value)
   console.log("height1",data.backHeight)
   console.log("height2",data.storeHeight)

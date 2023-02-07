@@ -2,6 +2,14 @@ html,body{
     height: 100%;
 }
 
+#content{
+    overflow: auto;
+}
+// 隐藏滚动条
+#content::-webkit-scrollbar{
+    display: none;
+  }
+
 .bottom-nav{
     @include rowOrColumn(row,space-around,center,center);
     height: 1.5rem;
