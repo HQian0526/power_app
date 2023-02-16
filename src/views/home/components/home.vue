@@ -1,9 +1,8 @@
 <template>
   <div id="homes" class="home">
-     <!-- ref="home" :style="{ height: data.storeHeight }" -->
     <div class="topInfo">
       <div class="coin-level">
-        <div class="level-icon">5</div>
+        <div class="level-icon">{{data.level}}</div>
         <div class="level-progress"><van-progress :percentage="50" stroke-width="15" color="#4EC5E4" track-color="#ADECEB"/></div>
       </div>
       <div class="coin-money">
@@ -97,7 +96,7 @@ import { getCurrentInstance, reactive, onMounted, ref, onBeforeUnmount } from "v
 import { Dialog, Toast } from "vant";
 import router from "@/pages/index";
 import { selectUserInfo } from "@/api/about";
-import { userSign,openUserBag } from "@/api/home";
+import { userSign,openUserBag,userLevel } from "@/api/home";
 import * as echarts from "echarts";
 const home = ref();
 const mainFunc = ref();
@@ -112,12 +111,12 @@ const data = reactive({
   showBag:false,
   intoData:[],
   bagInfo:[],
+  level:0
 });
-onMounted(() => {
-  // data.storeHeight = $instanceToBottom(home._value);
+onMounted(async() => {
   data.mainFuncHeight = $instanceToBottom(mainFunc._value);
   console.log("xxx", data.storeHeight);
-  getUserInfo();
+  await getUserLevel();
   initChart_effict();
 });
 
@@ -132,16 +131,13 @@ onBeforeUnmount(() => {
   }
 });
 
-//登录成功查询用户信息
-async function getUserInfo() {
-  await selectUserInfo({ username: localStorage.getItem("username") }).then(
-    (res) => {
-      if (res.code === 0) {
-        let token = JSON.stringify(res.content);
-        localStorage.setItem("token", token);
-      }
+function getUserLevel(){
+  const userId = JSON.parse(localStorage.getItem("token")).userId;
+  userLevel({userId}).then((res) => {
+    if(res.code===0){
+      data.level = res.content.levelInfo.levelNum
     }
-  );
+  })
 }
 
 //关闭签到页面
@@ -155,11 +151,11 @@ function closeBag(){
 }
 
 function tabButton(i){
-  let token = JSON.parse(localStorage.getItem("token")) 
+  const userId = JSON.parse(localStorage.getItem("token")).userId;
   switch(i){
     //签到
     case 0:
-      userSign({ userId:token.userId }).then((res) => {
+      userSign({ userId }).then((res) => {
         if(res.code===0){
           data.intoData = res.content.list
           data.showSign = true
@@ -170,8 +166,7 @@ function tabButton(i){
       break;
     //背包
     case 1:
-    // data.showBag = true
-      openUserBag({ userId:token.userId,typeId:10000 }).then((res) => {
+      openUserBag({ userId:userId,typeId:10000 }).then((res) => {
         if(res.code===0){
           data.bagInfo = JSON.parse(JSON.stringify(res.content.list)) 
           data.showBag = true
@@ -179,7 +174,6 @@ function tabButton(i){
           Toast("背包打开失败，请重试~")
         }
       })
-      
       break;
     //排行
     case 2:

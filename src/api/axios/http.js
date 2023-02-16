@@ -25,7 +25,7 @@ instance.interceptors.request.use(
             duration:0
         });
         if (config.url !== '/powertool/sys/login') {
-            if (localStorage.getItem('username')) {
+            if (localStorage.getItem('token')) {
                 return config;
             }
             Toast("用户未登录！")

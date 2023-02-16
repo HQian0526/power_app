@@ -1,5 +1,5 @@
 <template>
-  <div class="rank" ref="rank" :style="{ height: data.storeHeight }">
+  <div class="rank">
     <div class="title">
       <div class="title-back iconfont icon-back" @click="goBack"></div>
       <div class="title-font">排行榜</div>
@@ -26,7 +26,8 @@
       <div class="best-first">
         <div class="best-second-num">1</div>
         <div class="best-second-img">
-          <img style="width: 1.2rem;height: 1.2rem;border-radius: 5rem;" :src="require('@/assets/home/boy.png')" :srcset="require('@/assets/home/boy@2x.png')+' 2x,'+require('@/assets/home/boy@3x.png')+' 3x'"/>
+          <img style="width: 1.2rem;height: 1.2rem;border-radius
+          : 5rem;" :src="require('@/assets/home/boy.png')" :srcset="require('@/assets/home/boy@2x.png')+' 2x,'+require('@/assets/home/boy@3x.png')+' 3x'"/>
         </div>
         <div class="best-second-name">我是一个小测试</div>
         <div class="best-second-level">Lv.25</div>
@@ -42,7 +43,7 @@
       </div>
     </div>
     <div class="ranklist">
-      <div class="ranklist-detail" v-for="index in 7" :key="key">
+      <div class="ranklist-detail" v-for="index in 7" :key="key"> 
         <div class="ranklist-detail-num">{{index+3}}</div>
         <div class="ranklist-detail-imgurl">
           <img style="width: 1rem;height: 1rem;border-radius: 5rem;" :src="require('@/assets/home/boy.png')" :srcset="require('@/assets/home/boy@2x.png')+' 2x,'+require('@/assets/home/boy@3x.png')+' 3x'"/>
@@ -75,7 +76,6 @@
 <script setup>
 import { getCurrentInstance, reactive, onMounted, ref } from "vue";
 import router from "@/pages/index";
-import { Dialog, Toast } from "vant";
 const rank = ref();
 const _this = getCurrentInstance();
 const { $instanceToBottom } = _this.appContext.config.globalProperties;
@@ -85,7 +85,6 @@ const data = reactive({
   tabIndex:0,
 });
 onMounted(() => {
-  data.storeHeight = $instanceToBottom(rank._value);
 });
 
 function goBack(){

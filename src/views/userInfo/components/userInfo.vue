@@ -19,9 +19,10 @@
             </div>
           </div>
           <div class="top-info-right">
-            <div class="top-info-nickname">小九神<van-tag style="margin-left:0.2rem" size="large" type="warning">大学生</van-tag></div>
-            <div class="top-info-introduce">简介:星萤之火可以燎原</div>
-            <div class="top-info-province">所属地:广东广州</div>
+            <!-- <van-tag style="margin-left:0.2rem" size="large" type="warning">大学生</van-tag> -->
+            <div class="top-info-nickname">{{data.userInfo.nickName}}<span :class="data.userInfo.sex==='01'?'iconfont icon-man':'iconfont icon-woman'"></span></div>
+            <div class="top-info-introduce">简介:{{data.userInfo.introduceMe}}</div>
+            <div class="top-info-province">所属地:{{data.userInfo.city}}</div>
           </div>
           <div class="top-info-end">
             <div class="iconfont icon-arrowright"></div>
@@ -67,7 +68,7 @@
 import defaultHead from "@/assets/home/defaultHead.png";
 import ProductionCard from "@/components/productionCard";
 import { onMounted, reactive } from "vue";
-
+// const userInfo = ref()
 const data = reactive({
   active: 0,
   defaultHead: defaultHead,
@@ -81,18 +82,25 @@ const data = reactive({
   orderContent:'查看兑换订单',
   inviteTitle:'邀请好友',
   inviteContent:'邀请送金币',
+  userInfo:{}
 });
 
 onMounted(() => {
-  // let token = JSON.parse(localStorage.getItem("token"));
-  // data.nickName = token.nickName;
-  // data.introduce = token.introduceMe;
-  // data.isMan = token.sex;
+  // data.userInfo = JSON.parse(localStorage.getItem("token"));
+  initInfo();
 });
 
-// function pleaseWait() {
-//   Toast("暂未开放，敬请期待~");
-// }
+function initInfo(){
+  let token = JSON.parse(localStorage.getItem("token"))
+  console.log("token",token)
+  if(token!==null){
+    data.userInfo = {
+      nickName:token.nickName||'暂无昵称',
+      introduceMe:token.introduceMe||'这个人很懒，啥都没写~',
+      city:token.city||'暂无',
+    }
+  }
+}
 </script>
 
 <style lang="scss">

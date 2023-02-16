@@ -17,7 +17,6 @@ const instanceToBottom = (dom) => {
     let remRes =  setFontSize()
     instanceRes = (((window.innerHeight - (dom.offsetTop - window.pageYOffset))/remRes).toFixed(2)-1.5)+'rem'
   }
-  console.log("999",instanceRes)
   return instanceRes
 }
 
@@ -64,7 +63,7 @@ axios.defaults.timeout = 5000;
 //页面跳转时判断是否需要登录
 router.beforeEach(function(to, from, next){
     if(to.meta.needLogin){
-        if(localStorage.getItem('username'))return next()
+        if(localStorage.getItem('token'))return next()
         next({path:'/login'})
     }
     return next()
