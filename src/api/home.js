@@ -14,3 +14,8 @@ export function openUserBag(params){
 export function userLevel(params){
     return post("/powertool/home/userLevel",params)
 }
+
+//查询用户体力
+export function userStrength(params){
+    return post("/powertool/home/userStrength",params)
+}

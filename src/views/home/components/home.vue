@@ -3,7 +3,7 @@
     <div class="topInfo">
       <div class="coin-level">
         <div class="level-icon">{{data.level}}</div>
-        <div class="level-progress"><van-progress :percentage="50" stroke-width="15" color="#4EC5E4" track-color="#ADECEB"/></div>
+        <div class="level-progress"><van-progress :percentage="data.levelProgress" stroke-width="15" color="#4EC5E4" track-color="#ADECEB"/></div>
       </div>
       <div class="coin-money">
         <div class="coin-money-left"></div>
@@ -95,8 +95,8 @@ import userBag from "./userBag"
 import { getCurrentInstance, reactive, onMounted, ref, onBeforeUnmount } from "vue";
 import { Dialog, Toast } from "vant";
 import router from "@/pages/index";
-import { selectUserInfo } from "@/api/about";
-import { userSign,openUserBag,userLevel } from "@/api/home";
+import { userSign,openUserBag,userLevel,userStrength } from "@/api/home";
+import { numToFixed } from "@/util/util";
 import * as echarts from "echarts";
 const home = ref();
 const mainFunc = ref();
@@ -111,13 +111,15 @@ const data = reactive({
   showBag:false,
   intoData:[],
   bagInfo:[],
-  level:0
+  level:0,
+  levelProgress:0,
+  strength:0,
 });
 onMounted(async() => {
   data.mainFuncHeight = $instanceToBottom(mainFunc._value);
   console.log("xxx", data.storeHeight);
-  await getUserLevel();
-  initChart_effict();
+  getUserLevel();
+  getUserStrength();
 });
 
 //离开该页面时取消渲染
@@ -135,7 +137,18 @@ function getUserLevel(){
   const userId = JSON.parse(localStorage.getItem("token")).userId;
   userLevel({userId}).then((res) => {
     if(res.code===0){
-      data.level = res.content.levelInfo.levelNum
+      data.level = res.content.levelNum
+      data.levelProgress = numToFixed(res.content.progress*100,2)
+    }
+  })
+}
+
+function getUserStrength(){
+  const userId = JSON.parse(localStorage.getItem("token")).userId;
+  userStrength({userId}).then((res) => {
+    if(res.code===0){
+      data.strength = res.content.strength
+      initChart_effict();
     }
   })
 }
@@ -269,7 +282,7 @@ function initChart_effict() {
         },
         data: [
           {
-            value: 75,
+            value:19,
             name:"体力值",
           },
         ],

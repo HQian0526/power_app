@@ -113,8 +113,7 @@ function onSubmitTrue() {
     password: passw,
   }).then((res) => {
     if (res.code === 0) {
-      localStorage.setItem("token",JSON.stringify(res.content.userInfo))
-      // localStorage.setItem("username", data.username);
+      localStorage.setItem("token",JSON.stringify(res.content))
       router.push({
         path: "/home",
       });

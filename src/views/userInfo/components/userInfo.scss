@@ -51,10 +51,14 @@
             }
           }
           .top-info-introduce{
+            width:6rem;
             margin-top: 0.1rem;
             height: 0.5rem;
             font-size: 0.35rem;
             color:#999999;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
           }
           .top-info-province{
             margin-top: 0.1rem;

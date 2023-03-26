@@ -19,7 +19,6 @@
             </div>
           </div>
           <div class="top-info-right">
-            <!-- <van-tag style="margin-left:0.2rem" size="large" type="warning">大学生</van-tag> -->
             <div class="top-info-nickname">{{data.userInfo.nickName}}<span :class="data.userInfo.sex==='01'?'iconfont icon-man':'iconfont icon-woman'"></span></div>
             <div class="top-info-introduce">简介:{{data.userInfo.introduceMe}}</div>
             <div class="top-info-province">所属地:{{data.userInfo.city}}</div>
@@ -68,7 +67,6 @@
 import defaultHead from "@/assets/home/defaultHead.png";
 import ProductionCard from "@/components/productionCard";
 import { onMounted, reactive } from "vue";
-// const userInfo = ref()
 const data = reactive({
   active: 0,
   defaultHead: defaultHead,
@@ -86,7 +84,6 @@ const data = reactive({
 });
 
 onMounted(() => {
-  // data.userInfo = JSON.parse(localStorage.getItem("token"));
   initInfo();
 });
 
@@ -96,8 +93,9 @@ function initInfo(){
   if(token!==null){
     data.userInfo = {
       nickName:token.nickName||'暂无昵称',
-      introduceMe:token.introduceMe||'这个人很懒，啥都没写~',
+      introduceMe:token.introduceMe||'这个人很懒(bushi)，什么都没写~',
       city:token.city||'暂无',
+      sex:token.sex||'01'
     }
   }
 }
